@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "types/*"
+      ]
+    }
+  },
+  "include": [
+    "src/ts/*.ts"
+  ],
+  "exclude": [
+    "test/",
+    "node_modules/",
+    "dist/",
+    "types/"
+  ]
+}

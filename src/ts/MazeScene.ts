@@ -1,6 +1,6 @@
 import { Scene, Utils } from 'phaser'
 import Maze from './Maze'
-import BackTracer from './algriothms/BackTracer'
+import BackTrace from './algriothms/BackTrace'
 
 export default class MazeScene extends Scene {
   maze
@@ -12,7 +12,7 @@ export default class MazeScene extends Scene {
   constructor() {
     super({ key: 'MazeScene' })
 
-    let maze = this.maze = new Maze(5, 5, BackTracer)
+    let maze = this.maze = new Maze(5, 5, BackTrace)
 
     this.styles = {
       blank: 0xcccccc,
@@ -46,7 +46,7 @@ export default class MazeScene extends Scene {
 
   mazeStep() {
     // 
-    if (this.maze.step()) {
+    if (!this.maze.step()) {
       this.timerEvent.destroy()
     }
   }

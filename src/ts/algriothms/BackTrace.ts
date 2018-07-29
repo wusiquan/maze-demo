@@ -1,7 +1,7 @@
 import { GRID_DIRECTIONS, GRID_VISIT_STATE } from '../Constants'
 import MazeAlgriothm from '../MazeAlgriothm'
 
-export default class BackTracer extends MazeAlgriothm {
+export default class BackTrace extends MazeAlgriothm {
   stack = []
   runState
 
@@ -12,8 +12,9 @@ export default class BackTracer extends MazeAlgriothm {
   }
 
   /*
-   * 单步运行
-   * @return 运行状态是否已完成, 只有非已完成才可以继续
+   * 单步运行 
+   * @return 是否执行了单步
+   *         状态非DONE, 返回true, 表示执行了单步  状态DONE, 返回false, 表示没有执行单步
    */
   step() {
     if (this.runState == MazeAlgriothm.runState.START) {
@@ -22,7 +23,7 @@ export default class BackTracer extends MazeAlgriothm {
       this.runStep()
     }
     
-    return this.runState == MazeAlgriothm.runState.DONE
+    return this.runState !== MazeAlgriothm.runState.DONE
   }
 
   startStep() {

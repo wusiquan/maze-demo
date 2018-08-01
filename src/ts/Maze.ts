@@ -8,13 +8,15 @@ export default class Maze extends EventEmitter {
 
   rows: number
   cols: number
-  tileSize: number = 40
+  tileSize: number
 
-  constructor(rows, cols, algriothm) {
+  constructor(rows, cols, tileSize, algriothm) {
     super()
     this.rows = rows
     this.cols = cols
+    this.tileSize = tileSize
     this.grid = new Grid(this)
+    
     this.algriothm = new algriothm(this)
   }
 
@@ -23,6 +25,14 @@ export default class Maze extends EventEmitter {
     let x = col * tileSize
     let y = row * tileSize
     return new Phaser.Geom.Point(x, y)
+  }
+
+  /*
+   * 将二维数组的行列坐标转为一维数组的索引
+   * 可以给GameObjects.Container使用
+   */
+  coordsToIndex(row, col) {
+    return col + row * this.cols 
   }
 
   randomGrid() {
@@ -84,8 +94,8 @@ export default class Maze extends EventEmitter {
   }
 
   // 是否出边界
-  isValid(row, col) {
-    if (row >= 0 && row < this.rows && col >= 0 && col < this.cols) {
+  isValid(row, col, boundary = [ 0, 0, -1, -1 ]) {
+    if (row >= boundary[0] && row <= this.rows + boundary[2] && col >= boundary[1] && col <= this.cols + boundary[3]) {
       return true
     }
 

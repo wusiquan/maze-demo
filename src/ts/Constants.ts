@@ -5,9 +5,12 @@ export const GRID_DIRECTIONS = {
   W: 0x08,
   LIST: ['N', 'E', 'S', 'W'],
   // 对应行变化
-  DROW: { N: -1, E: 0, S: 1, W: 0 },
+  DROW1: { N: -1, E: 0, S: 1, W: 0 },
   // 对应列变换
-  DCOL: { N: 0, E: 1, S: 0, W: -1 },
+  DCOL1: { N: 0, E: 1, S: 0, W: -1 },
+
+  DROW2: { N: -2, E: 0, S: 2, W: 0 },
+  DCOL2: { N: 0, E: 2, S: 0, W: -2 },
   OPPOSITE: { N: 0x04, E: 0x08, S: 0x01, W: 0x02 }
 }
 

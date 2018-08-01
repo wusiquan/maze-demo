@@ -1,6 +1,6 @@
 import { Scene, Utils } from 'phaser'
 import Maze from './Maze'
-import BackTrace from './algriothms/BackTrace'
+import { MazeBackTrace } from './algriothms/BackTrace'
 
 export default class MazeScene extends Scene {
   maze
@@ -11,20 +11,23 @@ export default class MazeScene extends Scene {
 
   constructor() {
     super({ key: 'MazeScene' })
-
-    let maze = this.maze = new Maze(5, 5, BackTrace)
-
+    
     this.styles = {
       blank: 0xcccccc,
       wall: 0x000000,
       instack: 0xffaaaa,
       outstack: 0xffffff
     }
+    
+  }
+
+  init() {
+    let maze = this.maze = new Maze(5, 5, 40, MazeBackTrace)
 
     maze.on('updateGrid', (row, col) => {
       let g = this.graphics
 
-      let color 
+      let color
       
       if (maze.isInStack(row, col)) {
         color = this.styles.instack
@@ -37,11 +40,10 @@ export default class MazeScene extends Scene {
       this.drawCell(row, col, false)
     })
   }
-  
+    
   create() {
     this.drawMaze()
-
-    this.timerEvent = this.time.addEvent({ delay: 50, callback: this.mazeStep, callbackScope: this, loop: true })
+    // this.timerEvent = this.time.addEvent({ delay: 50, callback: this.mazeStep, callbackScope: this, loop: true })
   }
 
   mazeStep() {
@@ -50,11 +52,9 @@ export default class MazeScene extends Scene {
       this.timerEvent.destroy()
     }
   }
-  
+
   drawMaze() {
     let { rows, cols, tileSize } = this.maze
-
-    let totalWidth = cols * tileSize
 
     let container = this.add.container(100, 100)
     let g = this.graphics = this.add.graphics()

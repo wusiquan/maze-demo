@@ -1,19 +1,19 @@
 import { Scene, GameObjects, Time } from 'phaser'
 import Maze from './Maze'
-import { DungeonBackTrace } from './algriothms/BackTrace'
+import { TileMazeBackTrace } from './algriothms/BackTrace'
 
-export default class DungeonScene extends Scene {
+export default class TileMazeScene extends Scene {
   container: GameObjects.Container
   maze: Maze
   timerEvent: Time.TimerEvent
 
   constructor() {
-    super({ key: 'DungeonScene' })
+    super({ key: 'TileMazeScene' })
   }
 
   init() {
     // 注意这里21很有必要
-    let maze = this.maze = new Maze(21, 21, 32, DungeonBackTrace)
+    let maze = this.maze = new Maze(21, 21, 32, TileMazeBackTrace)
 
     maze.on('updateGrid', (row, col) => {
       this.updateCellFrame(row, col)

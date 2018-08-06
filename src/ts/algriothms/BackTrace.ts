@@ -105,7 +105,7 @@ export class MazeBackTrace extends AbstractBackTrace {
   }
 }
 
-export class DungeonBackTrace extends AbstractBackTrace {
+export class TileMazeBackTrace extends AbstractBackTrace {
 
   constructor(maze) {
     super(maze)

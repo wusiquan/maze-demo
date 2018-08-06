@@ -3,14 +3,14 @@ import '../styl/index.styl'
 
 import { Game } from 'phaser'
 import MazeScene from './MazeScene'
-import DungeonScene from './DungeonScene'
+import TileMazeScene from './TileMazeScene'
 
 export const gameConfig = {
   type: Phaser.AUTO,
   parent: 'maze-container',
   width: 800,
   height: 800,
-  scene: [ DungeonScene, MazeScene ],
+  scene: [ TileMazeScene, MazeScene ],
   transparent: true
 }
 

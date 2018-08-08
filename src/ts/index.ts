@@ -10,7 +10,7 @@ export const gameConfig = {
   parent: 'maze-container',
   width: 800,
   height: 800,
-  scene: [ TileMazeScene, MazeScene ],
+  scene: [ MazeScene, TileMazeScene ],
   transparent: true
 }
 

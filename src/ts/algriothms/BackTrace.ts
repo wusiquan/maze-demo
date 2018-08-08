@@ -1,5 +1,5 @@
 import { GRID_DIRECTIONS, GRID_VISIT_STATE } from '../Constants'
-import MazeAlgriothm from '../MazeAlgriothm'
+import MazeAlgriothm from './MazeAlgriothm'
 
 abstract class AbstractBackTrace extends MazeAlgriothm {
   stack = []

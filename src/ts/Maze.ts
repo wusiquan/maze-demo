@@ -1,6 +1,7 @@
 import { GRID_DIRECTIONS } from './Constants'
 import Grid from './Grid'
 import { EventEmitter } from 'eventemitter3'
+import Util from './Util'
 
 export default class Maze extends EventEmitter {
   grid
@@ -37,30 +38,15 @@ export default class Maze extends EventEmitter {
 
   randomGrid() {
     return {
-      row: this.randomNumber(this.rows),
-      col: this.randomNumber(this.cols)
+      row: Util.randomNumber(this.rows),
+      col: Util.randomNumber(this.cols)
     }
-  }
-
-  // [lowerValue, upperValue - 1]
-  randomNumber(upperValue, lowerValue = 0) {
-    return lowerValue + Math.floor(Math.random() * (upperValue - lowerValue))
   }
   
   shuffledDirections() {
     let directions = GRID_DIRECTIONS.LIST.slice()
-    let lastIndex = directions.length - 1
-    let index = 0
-
-    while (index < lastIndex) {
-      let randIndex = this.randomNumber(index, lastIndex + 1)
-
-      let tmp = directions[randIndex]
-      directions[randIndex] = directions[index]
-      directions[index] = tmp
-
-      index++
-    }
+    
+    Util.fisherYatesShuffle(directions)
 
     return directions
   }

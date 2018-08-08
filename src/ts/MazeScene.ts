@@ -1,6 +1,7 @@
 import { Scene, Utils } from 'phaser'
 import Maze from './Maze'
 import { MazeBackTrace } from './algriothms/BackTrace'
+import { MazeKruskal } from './algriothms/Kruskal'
 
 export default class MazeScene extends Scene {
   maze
@@ -22,7 +23,7 @@ export default class MazeScene extends Scene {
   }
 
   init() {
-    let maze = this.maze = new Maze(5, 5, 40, MazeBackTrace)
+    let maze = this.maze = new Maze(5, 5, 40, MazeKruskal)
 
     maze.on('updateGrid', (row, col) => {
       let g = this.graphics
@@ -43,7 +44,8 @@ export default class MazeScene extends Scene {
     
   create() {
     this.drawMaze()
-    // this.timerEvent = this.time.addEvent({ delay: 50, callback: this.mazeStep, callbackScope: this, loop: true })
+        
+    this.timerEvent = this.time.addEvent({ delay: 50, callback: this.mazeStep, callbackScope: this, loop: true })
   }
 
   mazeStep() {

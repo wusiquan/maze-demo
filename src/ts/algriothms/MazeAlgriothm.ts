@@ -1,4 +1,4 @@
-export default class MazeAlgrothm {
+export default abstract class MazeAlgrothm {
   maze
 
   static runState = {

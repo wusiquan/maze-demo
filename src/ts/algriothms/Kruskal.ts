@@ -20,7 +20,7 @@ function link(x, y) {
   if (x.rank > y.rank) {
     y.p = x
   } else {
-    // == 随便所以可以随 < 时的情况
+    // == 随便, 所以可以依 < 时的情况,设置x.p = y
     x.p = y
     if (x.rank == y.rank) {
       y.rank = x.rank + 1

@@ -30,7 +30,7 @@ abstract class AbstractBackTrace extends MazeAlgriothm {
     let maze = this.maze
 
     let grid = this.getFirstGrid()
-
+    
     // 为grid添加directions数组顺序随机
     grid.directions = maze.shuffledDirections()
 

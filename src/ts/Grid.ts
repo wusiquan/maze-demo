@@ -32,10 +32,12 @@ export default class Grid {
     return (this.data[row][col] & bits) === bits
   }
   
+  // 未访问过
   isWhite(row, col) {
     return this.data[row][col] === GRID_VISIT_STATE.WHITE
   }
 
+  // 访问过，但邻居未访问完
   isGrey(row, col) {
     return this.isMarked(row, col, GRID_VISIT_STATE.GREY)
   }

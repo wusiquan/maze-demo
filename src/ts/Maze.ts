@@ -87,7 +87,7 @@ export default class Maze extends EventEmitter {
 
     return false
   }
-
+  
   isWhite(row, col) {
     return this.grid.isWhite(row, col)
   }

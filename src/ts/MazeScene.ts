@@ -2,6 +2,7 @@ import { Scene, Utils } from 'phaser'
 import Maze from './Maze'
 import { MazeBackTrace } from './algriothms/BackTrace'
 import { MazeKruskal } from './algriothms/Kruskal'
+import { MazeBinaryTree } from './algriothms/BinaryTree'
 
 export default class MazeScene extends Scene {
   maze
@@ -23,11 +24,11 @@ export default class MazeScene extends Scene {
   }
 
   init() {
-    let maze = this.maze = new Maze(5, 5, 40, MazeKruskal)
+    let maze = this.maze = new Maze(5, 5, 40, MazeBinaryTree)
 
     maze.on('updateGrid', (row, col) => {
       let g = this.graphics
-
+      
       let color
       
       if (maze.isInStack(row, col)) {
@@ -44,7 +45,7 @@ export default class MazeScene extends Scene {
     
   create() {
     this.drawMaze()
-        
+    
     this.timerEvent = this.time.addEvent({ delay: 50, callback: this.mazeStep, callbackScope: this, loop: true })
   }
 
